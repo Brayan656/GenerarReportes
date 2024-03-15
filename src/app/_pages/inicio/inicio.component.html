@@ -1,0 +1,49 @@
+<input type="file" (change)="CargarDatosExel($event)">
+
+
+<p-table [value]="productos" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Imprimir</th>
+            <th>Codigo</th>
+            <th>Ubicación</th>
+            <th>Nombre</th>
+            <th>Palabra</th>
+            <th>Indicaciones</th>
+            <th>Consejos</th>
+            <th>Pictograma1</th>
+            <th>Pictograma2</th>
+            <th>Pictograma3</th>
+            <th>Pictograma4</th>
+            <th>Obligacion1</th>
+            <th>Obligacion2</th>
+            <th>Obligacion3</th>
+            <th>Obligacion4</th>
+            <th>Obligacion5</th>
+            <th>Obligacion6</th>
+            <th>Version </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td><button (click)="imprimir(product)">Imprimir</button></td>
+            <td>{{ product.Codigo }}</td>
+            <td>{{ product.Ubicacion }}</td>
+            <td>{{ product.Nombre }}</td>
+            <td>{{ product.Palabra }}</td>
+            <td>{{ product.Indicaciones }}</td>
+            <td>{{ product.Consejos }}</td>
+            <td>{{ product.Pictograma1 }}</td>
+            <td>{{ product.Pictograma2 }}</td>
+            <td>{{ product.Pictograma3 }}</td>
+            <td>{{ product.Pictograma4 }}</td>
+            <td>{{ product.Obligacion1 }}</td>
+            <td>{{ product.Obligacion2 }}</td>
+            <td>{{ product.Obligacion3 }}</td>
+            <td>{{ product.Obligacion4 }}</td>
+            <td>{{ product.Obligacion5 }}</td>
+            <td>{{ product.Obligacion6 }}</td>
+            <td>{{ product.Version }}</td>
+        </tr>
+    </ng-template>
+</p-table>

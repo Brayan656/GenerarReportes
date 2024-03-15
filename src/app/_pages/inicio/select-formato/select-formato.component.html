@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        <b>Selecciona los mormatos en los que lo quieres imprimir</b>
+    </div>
+    <form [formGroup]="form">
+
+        <div class="card-body">
+
+            <div class="flex align-items-center">
+                <input type="checkbox" label="Etiqueta Recipiente menor 500 ml" formControlName="EtqRecipMenor500ml"> <span>Etiqueta Recipiente menor 500 ml</span>
+            </div>
+            <div class="flex align-items-center">
+                <input type="checkbox" label="Etiqueta Recipiente mayor 500 ml" formControlName="EtqRecipMayor500ml"><span>Etiqueta Recipiente mayor 500 ml</span>
+            </div>
+            <div class="flex align-items-center">
+                <input type="checkbox" label="Etiqueta para publicacion" formControlName="EtqPublicacion"><span>Etiqueta para publicacion</span>
+            </div>
+            <div class="flex align-items-center">
+                <input type="checkbox" label="Etiqueta menor 500 ml SERVIKOM" formControlName="EtqMenor500mlServikom"><span>Etiqueta menor 500 ml SERVIKOM</span>
+            </div>
+            <div class="flex align-items-center">
+                <input type="checkbox" label="Etiqueta mayor 500 ml SERVIKOM" formControlName="EtqMayor500mlServikom"><span>Etiqueta mayor 500 ml SERVIKOM</span>
+            </div>
+            
+        </div>
+    </form>
+    <div class="card-footer ">
+        <button (click)="tamano()">Imprimir </button>
+        <button (click)="onNoClick()">Cancelar </button>
+    </div>
+</div>
