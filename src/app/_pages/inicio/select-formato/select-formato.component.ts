@@ -24,11 +24,11 @@ export class SelectFormatoComponent {
   }
   buildForm() {
     this.form = this.formBuilder.group({
-      EtqRecipMenor500ml: [{ value: false, disabled: false }, []],
-      EtqRecipMayor500ml: [{ value: false, disabled: false }, []],
-      EtqPublicacion: [{ value: false, disabled: false }, []],
-      EtqMenor500mlServikom: [{ value: false, disabled: false }, []],
-      EtqMayor500mlServikom: [{ value: false, disabled: false }, []],
+      alto62_ancho84: [{ value: false, disabled: false }, []],
+      alto84_ancho105: [{ value: false, disabled: false }, []],
+      alto115_ancho148: [{ value: false, disabled: false }, []],
+      alto158_ancho210: [{ value: false, disabled: false }, []],
+      //alto62_ancho84: [{ value: false, disabled: false }, []],
 
     });
   }
@@ -37,21 +37,23 @@ export class SelectFormatoComponent {
   tamano() {
 
     this.zice = [];
-    if (this.form.controls['EtqRecipMenor500ml'].getRawValue()) {
-      this.zice.push('EtqRecipMenor500ml');
+    if (this.form.controls['alto62_ancho84'].getRawValue()) {
+      this.zice.push('alto62_ancho84');
     }
-    if (this.form.controls['EtqRecipMayor500ml'].getRawValue()) {
-      this.zice.push('EtqRecipMayor500ml');
+    if (this.form.controls['alto84_ancho105'].getRawValue()) {
+      this.zice.push('alto84_ancho105');
     }
-    if (this.form.controls['EtqPublicacion'].getRawValue()) {
-      this.zice.push('EtqPublicacion');
+    if (this.form.controls['alto115_ancho148'].getRawValue()) {
+      this.zice.push('alto115_ancho148');
     }
-    if (this.form.controls['EtqMenor500mlServikom'].getRawValue()) {
-      this.zice.push('EtqMenor500mlServikom');
+    if (this.form.controls['alto158_ancho210'].getRawValue()) {
+      this.zice.push('alto158_ancho210');
     }
+    /*
     if (this.form.controls['EtqMayor500mlServikom'].getRawValue()) {
       this.zice.push('EtqMayor500mlServikom');
     }
+    */
 
     this.dialogRef.close(this.zice);
 

@@ -4,8 +4,8 @@
 <p-table [value]="productos" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
         <tr>
-            <th>Imprimir</th>
             <th>Codigo</th>
+            <th>Imprimir</th>
             <th>Ubicación</th>
             <th>Nombre</th>
             <th>Palabra</th>
@@ -26,8 +26,8 @@
     </ng-template>
     <ng-template pTemplate="body" let-product>
         <tr>
-            <td><button (click)="imprimir(product)">Imprimir</button></td>
             <td>{{ product.Codigo }}</td>
+            <td><button (click)="imprimir(product)">Imprimir</button></td>
             <td>{{ product.Ubicacion }}</td>
             <td>{{ product.Nombre }}</td>
             <td>{{ product.Palabra }}</td>
