@@ -1,0 +1,96 @@
+.cuerpo {
+    width: 100%;
+    min-height: 100vh;
+
+    background: none;
+
+    .card {
+        background: none;
+    }
+}
+
+.titulo {
+    font-size: 30px;
+    color: #fff;
+    font-weight: bolder;
+    background: #ff2424;
+    height: 100px;
+
+    span {
+        position: relative;
+        top: 50%;
+    }
+}
+
+
+.tablas {
+    margin: 10px;
+
+    tr {
+        font-size: 10px;
+        border: 0.1px solid #5c5c5c;
+        padding: 0;
+        th {
+            color: #000;
+            background: linear-gradient(#f4d8c3, #e55a5a);
+            text-align: center;
+            padding: 8px;
+
+        }
+
+        td {
+            .p-column-title {
+                font-weight: bold;
+            }
+
+            color: #000;
+            font-size: 11px;
+            padding: 0 8px;
+
+        }
+
+        .centrar {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .filtro {
+        .p-column-filter-row{
+            padding: 0;
+        }
+        th {
+            background: none;
+            padding: 0;
+        }
+    }
+}
+
+
+.file-select {
+    position: relative;
+    display: inline-block;
+}
+
+.file-select::before {
+    background-color: #5678EF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: 'Seleccionar';
+    /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.file-select input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;
+}

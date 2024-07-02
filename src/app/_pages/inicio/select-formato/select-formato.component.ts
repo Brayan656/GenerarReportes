@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [CheckboxModule, ReactiveFormsModule, FormsModule],
   templateUrl: './select-formato.component.html',
-  styleUrl: './select-formato.component.sass'
+  styleUrl: './select-formato.component.scss'
 })
 export class SelectFormatoComponent {
 

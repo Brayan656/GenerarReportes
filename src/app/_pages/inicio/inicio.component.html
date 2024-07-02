@@ -1,49 +1,145 @@
-<input type="file" (change)="CargarDatosExel($event)">
+<div class="cuerpo">
+    <div class="card text-center">
+        <div class="card-header titulo">
+            <span>Generar Etiquetas</span>
+        </div>
+        <div class="card-body">
+            <div class="">
+
+                <div class="tablas">
+                    <p-table [value]="productos" #dt2 styleClass="p-datatable-sm" [globalFilterFields]="[
+                'Codigo',
+                'Ubicacion',
+                'Nombre',
+                'Palabra',
+                'Indicaciones',
+                'Consejos',
+                'Pictograma1',
+                'Pictograma2',
+                'Pictograma3',
+                'Pictograma4',
+                'Obligacion1',
+                'Obligacion2',
+                'Obligacion3',
+                'Obligacion4',
+                'Obligacion5',
+                'Obligacion6',
+                'Version',
+            ]" [paginator]="true" [rows]="2" [first]="first" [showCurrentPageReport]="true" 
+                        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} resgistros"
+                        (onPage)="pageChange($event)" [rowsPerPageOptions]="[2,5, 10, 25, 50]" 
+                        [breakpoint]="'1500px'" [tableStyle]="{'min-width': '1300'}" sortMode="multiple">
+
+                        <!--Titulo tabla-->
+                        <ng-template pTemplate="caption">
+                            <div class="row" style="justify-content: center;">
+                                <div class="col-md-3 col-12">
+                                    <div class="file-select" id="src-file1">
+                                        <input type="file" name="src-file1" aria-label="Archivo"
+                                            (change)="CargarDatosExel($event)">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-12">
+                                    <p-button type="button" icon="pi pi-chevron-left" (click)="prev()"
+                                        [disabled]="isFirstPage()" styleClass="p-button-text" />
+                                    <p-button type="button" icon="pi pi-refresh" (click)="reset()"
+                                        styleClass="p-button-text" />
+                                    <p-button type="button" icon="pi pi-chevron-right" (click)="next()"
+                                        [disabled]="isLastPage()" styleClass="p-button-text" />
+                                </div>
+                                <div class="col-md-3 col-12">
+                                    <div class="flex">
+                                        <p-iconField iconPosition="left" class="ml-auto">
+                                            <p-inputIcon>
+                                                <i class="pi pi-search"></i>
+                                            </p-inputIcon>
+                                            <input pInputText type="text" (input)="aplicarFiltros($event,'contains')"
+                                                placeholder="Search keyword" />
+                                        </p-iconField>
+                                    </div>
+                                </div>
+                            </div>
 
 
-<p-table [value]="productos" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Codigo</th>
-            <th>Imprimir</th>
-            <th>Ubicación</th>
-            <th>Nombre</th>
-            <th>Palabra</th>
-            <th>Indicaciones</th>
-            <th>Consejos</th>
-            <th>Pictograma1</th>
-            <th>Pictograma2</th>
-            <th>Pictograma3</th>
-            <th>Pictograma4</th>
-            <th>Obligacion1</th>
-            <th>Obligacion2</th>
-            <th>Obligacion3</th>
-            <th>Obligacion4</th>
-            <th>Obligacion5</th>
-            <th>Obligacion6</th>
-            <th>Version </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-product>
-        <tr>
-            <td>{{ product.Codigo }}</td>
-            <td><button (click)="imprimir(product)">Imprimir</button></td>
-            <td>{{ product.Ubicacion }}</td>
-            <td>{{ product.Nombre }}</td>
-            <td>{{ product.Palabra }}</td>
-            <td>{{ product.Indicaciones }}</td>
-            <td>{{ product.Consejos }}</td>
-            <td>{{ product.Pictograma1 }}</td>
-            <td>{{ product.Pictograma2 }}</td>
-            <td>{{ product.Pictograma3 }}</td>
-            <td>{{ product.Pictograma4 }}</td>
-            <td>{{ product.Obligacion1 }}</td>
-            <td>{{ product.Obligacion2 }}</td>
-            <td>{{ product.Obligacion3 }}</td>
-            <td>{{ product.Obligacion4 }}</td>
-            <td>{{ product.Obligacion5 }}</td>
-            <td>{{ product.Obligacion6 }}</td>
-            <td>{{ product.Version }}</td>
-        </tr>
-    </ng-template>
-</p-table>
+
+                        </ng-template>
+
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="Codigo"><p-sortIcon field="Codigo" />Codigo</th>
+                                <th >Imprimir</th>
+                                <th pSortableColumn="Ubicacion"><p-sortIcon field="Ubicacion" />Ubicación</th>
+                                <th pSortableColumn="Nombre"><p-sortIcon field="Nombre" />Nombre</th>
+                                <th pSortableColumn="Palabra"><p-sortIcon field="Palabra" />Palabra</th>
+                                <th width="25%" pSortableColumn="Indicaciones"><p-sortIcon field="Indicaciones" />Indicaciones</th>
+                                <th width="25%" pSortableColumn="Consejos"><p-sortIcon field="Consejos" />Consejos</th>
+                                <th pSortableColumn="Pictograma1"><p-sortIcon field="Pictograma1" />Pictograma1</th>
+                                <th pSortableColumn="Pictograma2"><p-sortIcon field="Pictograma2" />Pictograma2</th>
+                                <th pSortableColumn="Pictograma3"><p-sortIcon field="Pictograma3" />Pictograma3</th>
+                                <th pSortableColumn="Pictograma4"><p-sortIcon field="Pictograma4" />Pictograma4</th>
+                                <th pSortableColumn="Obligacion1"><p-sortIcon field="Obligacion1" />Obligacion1</th>
+                                <th pSortableColumn="Obligacion2"><p-sortIcon field="Obligacion2" />Obligacion2</th>
+                                <th pSortableColumn="Obligacion3"><p-sortIcon field="Obligacion3" />Obligacion3</th>
+                                <th pSortableColumn="Obligacion4"><p-sortIcon field="Obligacion4" />Obligacion4</th>
+                                <th pSortableColumn="Obligacion5"><p-sortIcon field="Obligacion5" />Obligacion5</th>
+                                <th pSortableColumn="Obligacion6"><p-sortIcon field="Obligacion6" />Obligacion6</th>
+                                <th pSortableColumn="Version"><p-sortIcon field="Version" />Version</th>
+                            </tr>
+                            <tr class="filtro">
+                                <th><p-columnFilter type="text" field="Codigo" placeholder="Busca por Codigo" /></th>
+                                <th></th>
+                                <th><p-columnFilter type="text" field="Ubicacion" placeholder="Busca por Ubicacion" /></th>
+                                <th><p-columnFilter type="text" field="Nombre" placeholder="Busca por Nombre" /></th>
+                                <th><p-columnFilter type="text" field="Palabra" placeholder="Busca por Palabra" /></th>
+                                <th><p-columnFilter type="text" field="Indicaciones" placeholder="Busca por Indicaciones" /></th>
+                                <th><p-columnFilter type="text" field="Consejos" placeholder="Busca por Consejos" /></th>
+                                <th><p-columnFilter type="text" field="Pictograma1" placeholder="Busca por Pictograma1" /></th>
+                                <th><p-columnFilter type="text" field="Pictograma2" placeholder="Busca por Pictograma2" /></th>
+                                <th><p-columnFilter type="text" field="Pictograma3" placeholder="Busca por Pictograma3" /></th>
+                                <th><p-columnFilter type="text" field="Pictograma4" placeholder="Busca por Pictograma4" /></th>
+                                <th><p-columnFilter type="text" field="Obligacion1" placeholder="Busca por Obligacion1" /></th>
+                                <th><p-columnFilter type="text" field="Obligacion2" placeholder="Busca por Obligacion2" /></th>
+                                <th><p-columnFilter type="text" field="Obligacion3" placeholder="Busca por Obligacion3" /></th>
+                                <th><p-columnFilter type="text" field="Obligacion4" placeholder="Busca por Obligacion4" /></th>
+                                <th><p-columnFilter type="text" field="Obligacion5" placeholder="Busca por Obligacion5" /></th>
+                                <th><p-columnFilter type="text" field="Obligacion6" placeholder="Busca por Obligacion6" /></th>
+                                <th><p-columnFilter type="text" field="Version" placeholder="Busca por Version" /></th>
+                            </tr>
+                        </ng-template>
+
+                        <ng-template pTemplate="body" let-product>
+                            <tr>
+                                <td><span class="p-column-title">Codigo</span>{{ product.Codigo }}</td>
+                                <td><span class="p-column-title">Imprimir Etiquetas</span>
+                                    <p-button icon="pi pi-print" (click)="imprimir(product)"/>
+                                    
+                                </td>
+                                <td><span class="p-column-title">Ubicación</span>{{ product.Ubicacion }}</td>
+                                <td><span class="p-column-title">Nombre</span>{{ product.Nombre }}</td>
+                                <td><span class="p-column-title">Palabra</span>{{ product.Palabra }}</td>
+                                <td><span class="p-column-title">Indicaciones</span>{{ product.Indicaciones }}</td>
+                                <td><span class="p-column-title">Consejos</span>{{ product.Consejos }}</td>
+                                <td><span class="p-column-title">Pictograma1</span>{{ product.Pictograma1 }}</td>
+                                <td><span class="p-column-title">Pictograma2</span>{{ product.Pictograma2 }}</td>
+                                <td><span class="p-column-title">Pictograma3</span>{{ product.Pictograma3 }}</td>
+                                <td><span class="p-column-title">Pictograma4</span>{{ product.Pictograma4 }}</td>
+                                <td><span class="p-column-title">Obligacion1</span>{{ product.Obligacion1 }}</td>
+                                <td><span class="p-column-title">Obligacion2</span>{{ product.Obligacion2 }}</td>
+                                <td><span class="p-column-title">Obligacion3</span>{{ product.Obligacion3 }}</td>
+                                <td><span class="p-column-title">Obligacion4</span>{{ product.Obligacion4 }}</td>
+                                <td><span class="p-column-title">Obligacion5</span>{{ product.Obligacion5 }}</td>
+                                <td><span class="p-column-title">Obligacion6</span>{{ product.Obligacion6 }}</td>
+                                <td><span class="p-column-title">Version </span>{{ product.Version }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card-footer text-body-secondary">
+
+        </div>
+    </div>
+</div>

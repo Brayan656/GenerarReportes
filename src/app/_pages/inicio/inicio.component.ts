@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import * as XLXS from 'xlsx'
 import { DialogModule } from 'primeng/dialog';
@@ -9,6 +9,12 @@ import { alto84_ancho105 } from '../../formatosPDF/alto84_ancho105';
 import { alto115_ancho148 } from '../../formatosPDF/alto115_ancho148';
 import { alto158_ancho210 } from '../../formatosPDF/alto158_ancho210';
 import { SelectFormatoComponent } from './select-formato/select-formato.component';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
+import { Table } from 'primeng/table';
 interface Productos {
   Codigo: string
   Ubicacion: string
@@ -34,9 +40,18 @@ interface Productos {
   selector: 'app-inicio',
   standalone: true,
   providers: [DialogService],
-  imports: [TableModule, DialogModule, DynamicDialogModule, MatDialogModule],
+  imports: [
+    TableModule,
+    DialogModule,
+    DynamicDialogModule,
+    MatDialogModule,
+    CardModule,
+    ButtonModule,
+    IconFieldModule,
+    InputIconModule,
+    InputTextModule],
   templateUrl: './inicio.component.html',
-  styleUrl: './inicio.component.sass'
+  styleUrl: './inicio.component.scss'
 })
 export class InicioComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
@@ -48,7 +63,7 @@ export class InicioComponent implements OnInit {
 
   productos: Productos[] = [
   ];
-  CargarDatosExel(event: any) {
+  CargarDatosExel(event) {
     let file = event.target.files[0];
 
     let fileReader = new FileReader();
@@ -64,7 +79,7 @@ export class InicioComponent implements OnInit {
 
       console.log(this.productos);
     }
-    
+
   }
 
 
@@ -76,7 +91,7 @@ export class InicioComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-//console.log(result);
+      //console.log(result);
 
       if (result != undefined) {
 
@@ -85,7 +100,7 @@ export class InicioComponent implements OnInit {
           switch (element) {
             case 'alto62_ancho84':
               //console.log('hola');
-              
+
               pdf = new alto62_ancho84(
                 producto.Nombre,
                 producto.Palabra,
@@ -185,4 +200,36 @@ export class InicioComponent implements OnInit {
 
   }
 
+  //Elementos de la tabla
+  @ViewChild(Table) dt: Table;
+  aplicarFiltros(event, tipoConsilta: string) {
+    this.dt!.filterGlobal((event.target as HTMLInputElement).value, tipoConsilta);
+  }
+  first = 0;
+
+  rows = 10;
+  next() {
+    this.first = this.first + this.rows;
+  }
+
+  prev() {
+    this.first = this.first - this.rows;
+  }
+
+  reset() {
+    this.first = 0;
+  }
+
+  pageChange(event) {
+    this.first = event.first;
+    this.rows = event.rows;
+  }
+
+  isLastPage(): boolean {
+    return this.productos ? this.first === this.productos.length - this.rows : true;
+  }
+
+  isFirstPage(): boolean {
+    return this.productos ? this.first === 0 : true;
+  }
 }
