@@ -92,19 +92,19 @@ export class datosIniciales {
         this.indicaciones1 = indicaciones.replaceAll('.', '.\n');
         this.consejos1 = consejos;
         this.codigo1 = codigo;
-        this.version1 = version;
+        this.version1 = (version==undefined)?'':pictograma1.trim();
 
-        this.pictograma1 = pictograma1;
-        this.pictograma2 = pictograma2;
-        this.pictograma3 = pictograma3;
-        this.pictograma4 = pictograma4;
+        this.pictograma1 = (pictograma1==undefined||pictograma1==''?'NOAPLICA':pictograma1.trim());
+        this.pictograma2 = (pictograma2==undefined||pictograma2==''?'NOAPLICA':pictograma2.trim());
+        this.pictograma3 = (pictograma3==undefined||pictograma3==''?'NOAPLICA':pictograma3.trim());
+        this.pictograma4 = (pictograma4==undefined||pictograma4==''?'NOAPLICA':pictograma4.trim());
 
-        this.obligacion1 = obligacion1;
-        this.obligacion2 = obligacion2;
-        this.obligacion3 = obligacion3;
-        this.obligacion4 = obligacion4;
-        this.obligacion5 = obligacion5;
-        this.obligacion6 = obligacion6;
+        this.obligacion1 = (obligacion1==undefined||obligacion1==''?'NoDisponible':obligacion1.trim());
+        this.obligacion2 = (obligacion2==undefined||obligacion2==''?'NoDisponible':obligacion2.trim());
+        this.obligacion3 = (obligacion3==undefined||obligacion3==''?'NoDisponible':obligacion3.trim());
+        this.obligacion4 = (obligacion4==undefined||obligacion4==''?'NoDisponible':obligacion4.trim());
+        this.obligacion5 = (obligacion5==undefined||obligacion5==''?'NoDisponible':obligacion5.trim());
+        this.obligacion6 = (obligacion6==undefined||obligacion6==''?'NoDisponible':obligacion6.trim());
 
     }
 
